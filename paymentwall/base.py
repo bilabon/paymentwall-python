@@ -96,7 +96,8 @@ class Paymentwall:
     def request_calculate_signature(self, params, secret, version):
         base_string = ''
 
-        def is_array(var): return isinstance(var, (list, tuple))
+        def is_array(var):
+            return isinstance(var, (list, tuple))
 
         params = sorted(params.items())
 

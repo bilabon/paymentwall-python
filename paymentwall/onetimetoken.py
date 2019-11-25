@@ -1,8 +1,9 @@
 from paymentwall.apiobject import ApiObject
 
+
 class OneTimeToken(ApiObject):
     def __init__(self):
-        ApiObject.__init__(self, obj='token')
+        super().__init__(self, obj='token')
 
     def get_token(self):
         return self.get_response()['token']
@@ -12,4 +13,3 @@ class OneTimeToken(ApiObject):
 
     def get_expiration_time(self):
         return self.get_response()['expires_in']
-

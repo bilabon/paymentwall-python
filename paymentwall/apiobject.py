@@ -2,6 +2,7 @@ from paymentwall.httpaction import Httpaction
 from paymentwall.base import Paymentwall
 import json
 
+
 class ApiObject(Paymentwall, Httpaction):
     API_BRICK_SUBPATH = 'brick'
     API_OBJECT_CHARGE = 'charge'
@@ -22,7 +23,7 @@ class ApiObject(Paymentwall, Httpaction):
             return ''
 
     def get_api_url(self):
-        if self.obj == 'token' and self.is_test() == False:
+        if self.obj == 'token' and not self.is_test():
             return 'https://pwgateway.com/api/token'
         else:
             return self.BASE + '/' + self.API_BRICK_SUBPATH + '/' + self.get_endpoint_name()
@@ -85,4 +86,4 @@ class ApiObject(Paymentwall, Httpaction):
         self.set_response(json.loads(response))
 
     def object_response(self):
-        return True if self.get_response()['object'] else False
+        return True if self.get_response().get('object') else False

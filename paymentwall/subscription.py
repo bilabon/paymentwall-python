@@ -1,8 +1,9 @@
 from paymentwall.apiobject import ApiObject
 
+
 class Subscription(ApiObject):
-    def __init__(self, id=''):
-        ApiObject.__init__(self, id=id, obj='subscription') if id else ApiObject.__init__(self, obj='subscription')
+    def __init__(self, id='', obj='subscription'):
+        super().__init__(id=id, obj='subscription')
 
     def get_id(self):
         return self.id

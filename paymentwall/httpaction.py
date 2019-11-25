@@ -1,6 +1,7 @@
 import requests
 
-class Httpaction():
+
+class Httpaction:
     def __init__(self, baseurl, params, header):
         self.baseurl = baseurl
         self.params = params

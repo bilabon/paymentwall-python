@@ -66,7 +66,8 @@ class Pingback(Paymentwall):
         )
 
         signature = self.parameters['sig'] if 'sig' in self.parameters else None
-
+        print('signature', signature)
+        print('signature_calculated', signature_calculated)
         return signature == signature_calculated
 
     def is_ip_address_valid(self):

@@ -1,8 +1,9 @@
 from paymentwall.apiobject import ApiObject
 
+
 class Charge(ApiObject):
     def __init__(self, id=''):
-        ApiObject.__init__(self, id=id, obj='charge') if id else ApiObject.__init__(self, obj='charge')
+        super().__init__(id=id, obj='charge')
 
     def get_id(self):
         return self.id
@@ -21,6 +22,9 @@ class Charge(ApiObject):
 
     def is_under_review(self):
         return self.get_response()['risk'] == 'pending'
+
+    def is_approved(self):
+        return self.get_response()['risk'] == 'approved'
 
     def is_refunded(self):
         return self.get_response()['refunded']
